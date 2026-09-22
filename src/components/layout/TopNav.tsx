@@ -75,25 +75,6 @@ export default function TopNav({ role = 'student' }: { role?: 'student' | 'alumn
           </Link>
         </div>
       </div>
-
-      {/* Admin Bar (Conditional) */}
-      {role === 'admin' && (
-        <div className="w-full bg-brand-deep text-white text-sm py-2">
-          <div className="container mx-auto px-4 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="font-semibold text-brand-glow">Admin Console</span>
-              <div className="flex items-center gap-2">
-                <Link to="/admin/approvals" className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors flex items-center gap-2">
-                  Approvals <span className="bg-brand-glow text-brand-deep px-1.5 py-0.5 rounded-full text-[10px] font-bold">5</span>
-                </Link>
-                <Link to="/admin/users" className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors">User DB</Link>
-                <Link to="/admin/events" className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors">Post Event</Link>
-                <Link to="/admin/analytics" className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors">System Analytics</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AdminLoginPage: React.FC = () => {
+  const navigate = useNavigate();
   const [view, setView] = useState<'signin' | 'signup'>('signin');
   const [showSigninPassword, setShowSigninPassword] = useState(false);
   const [showSignupPassword, setShowSignupPassword] = useState(false);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/admin');
+  };
 
   return (
     <div className="auth-viewport">
@@ -17,7 +23,7 @@ const AdminLoginPage: React.FC = () => {
           <div className="form-panel form-signin">
             <h2 className="title">Sign in as Admin</h2>
 
-            <form className="actual-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="actual-form" onSubmit={handleLogin}>
               <div className="field relative">
                 <label>Admin Email</label>
                 <div className="input-wrapper">
@@ -70,7 +76,7 @@ const AdminLoginPage: React.FC = () => {
           <div className="form-panel form-signup">
             <h2 className="title">Create Admin Account</h2>
 
-            <form className="actual-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="actual-form" onSubmit={handleLogin}>
               <div className="field relative">
                 <label>Admin Email</label>
                 <div className="input-wrapper">
