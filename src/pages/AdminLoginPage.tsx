@@ -48,10 +48,12 @@ const AdminLoginPage: React.FC = () => {
                   </button>
                 </div>
               </div>
-              <div className="meta-row">
-                <label><input type="checkbox" defaultChecked /> Keep me signed in</label>
-                <button type="button" className="link-btn" onClick={() => setView('signup')}>
-                  Don't have an account? <span className="golden-underline">Register now</span>
+              <div className="meta-row" style={{ gap: '1rem' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                  <input type="checkbox" defaultChecked /> Keep me signed in
+                </label>
+                <button type="button" className="link-btn" onClick={() => setView('signup')} style={{ color: '#64748b', fontWeight: 600 }}>
+                  Don't have an account? <span className="golden-underline" style={{ color: '#0f172a', fontWeight: 700, marginLeft: '0.25rem' }}>Register now</span>
                 </button>
               </div>
               <button type="submit" className="submit-action">Sign in as Admin</button>

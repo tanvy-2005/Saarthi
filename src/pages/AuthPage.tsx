@@ -67,10 +67,12 @@ const AuthPage: React.FC = () => {
                   </button>
                 </div>
               </div>
-              <div className="meta-row">
-                <label><input type="checkbox" defaultChecked /> Keep me signed in</label>
-                <button type="button" className="link-btn" onClick={() => setView('signup')}>
-                  Don't have an account? <span className="golden-underline">Register now</span>
+              <div className="meta-row" style={{ gap: '1rem' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
+                  <input type="checkbox" defaultChecked /> Keep me signed in
+                </label>
+                <button type="button" className="link-btn" onClick={() => setView('signup')} style={{ color: '#64748b', fontWeight: 600 }}>
+                  Don't have an account? <span className="golden-underline" style={{ color: '#0f172a', fontWeight: 700, marginLeft: '0.25rem' }}>Register now</span>
                 </button>
               </div>
               <button type="submit" className="submit-action">Sign in</button>
@@ -156,10 +158,7 @@ const AuthPage: React.FC = () => {
                 <div className="field"><label>Course</label><input type="text" placeholder="BTech" required /></div>
                 <div className="field"><label>Department</label><input type="text" placeholder="CSE" required /></div>
               </div>
-              <div className="row-2">
-                <div className="field"><label>City</label><input type="text" placeholder="Mumbai" required /></div>
-                <div className="field"><label>Batch / Roll Code</label><input type="text" placeholder="CSE-2023-012" required /></div>
-              </div>
+
 
               <button type="submit" className="submit-action">Register & Submit Verification</button>
             </form>

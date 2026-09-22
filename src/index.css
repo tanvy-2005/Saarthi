@@ -241,9 +241,10 @@ button.input-icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #64748b;
+  flex-wrap: nowrap;
 }
 
 .link { font-family: 'Quicksand', sans-serif; color: #64748b; text-decoration: underline; }
@@ -272,6 +273,7 @@ button.input-icon {
   font-size: 0.88rem;
   color: #64748b;
   font-weight: 600;
+  text-align: center;
 }
 
 .link-btn {
@@ -281,6 +283,8 @@ button.input-icon {
   color: #0f172a;
   font-weight: 700;
   cursor: pointer;
+  font-size: inherit;
+  white-space: nowrap;
 }
 
 .golden-underline {
