@@ -3,6 +3,7 @@ import AuthPage from './pages/AuthPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AppLayout from './components/layout/AppLayout';
 import LandingPage from './components/layout/LandingPage';
+import AlumniDashboard from './pages/AlumniDashboard';
 import NetworkPage from './pages/Network';
 import MentorshipPage from './pages/Mentorship';
 import OpportunitiesPage from './pages/Opportunities';
@@ -15,28 +16,47 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/" element={<AuthPage />} />
+        <Route path="/auth" element={<Navigate to="/" replace />} />
         <Route path="/admin/login" element={<AdminLoginPage />} />
         
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/network" element={<NetworkPage />} />
-          <Route path="/mentorship" element={<MentorshipPage />} />
-          <Route path="/opportunities" element={<OpportunitiesPage />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/giving" element={<GivingPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          
-          {/* Institutional Admin Portal */}
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/admin/dashboard" element={<Navigate to="/admin?tab=dashboard" replace />} />
-          <Route path="/admin/users" element={<Navigate to="/admin?tab=users" replace />} />
-          <Route path="/admin/verification" element={<Navigate to="/admin?tab=verification" replace />} />
-          <Route path="/admin/approvals" element={<Navigate to="/admin?tab=verification" replace />} />
-          <Route path="/admin/events" element={<Navigate to="/admin?tab=events" replace />} />
-          <Route path="/admin/reports" element={<Navigate to="/admin?tab=reports" replace />} />
-          <Route path="/admin/analytics" element={<Navigate to="/admin?tab=reports" replace />} />
+        {/* ALUMNI NESTED ROUTES */}
+        <Route path="/alumni" element={<AppLayout role="alumni" />}>
+          <Route path="home" element={<AlumniDashboard />} />
+          <Route path="events" element={<EventsPage />} />
+          <Route path="mentorship" element={<MentorshipPage />} />
+          <Route path="jobs" element={<OpportunitiesPage />} />
+          <Route path="networking" element={<NetworkPage />} />
+          <Route path="fundraising" element={<GivingPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          {/* messages missing, we can route it back to home for now */}
+          <Route path="messages" element={<AlumniDashboard />} />
         </Route>
+
+        {/* STUDENT NESTED ROUTES */}
+        <Route path="/student" element={<AppLayout role="student" />}>
+          <Route path="home" element={<AlumniDashboard />} />
+          <Route path="events" element={<EventsPage />} />
+          <Route path="mentorship" element={<MentorshipPage />} />
+          <Route path="jobs" element={<OpportunitiesPage />} />
+          <Route path="networking" element={<NetworkPage />} />
+          <Route path="fundraising" element={<GivingPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="messages" element={<AlumniDashboard />} />
+        </Route>
+
+        {/* ADMIN NESTED ROUTES */}
+        <Route path="/admin" element={<AppLayout role="admin" />}>
+          <Route path="home" element={<AdminPage activeTab="dashboard" />} />
+          <Route path="users" element={<AdminPage activeTab="users" />} />
+          <Route path="verifications" element={<AdminPage activeTab="verification" />} />
+          <Route path="events" element={<AdminPage activeTab="events" />} />
+          <Route path="reports" element={<AdminPage activeTab="reports" />} />
+        </Route>
+
+        {/* Backwards Compatibility / Fallbacks */}
+        <Route path="/home" element={<Navigate to="/alumni/home" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

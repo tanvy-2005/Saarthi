@@ -9,6 +9,12 @@ const AuthPage: React.FC = () => {
   const [showSigninPassword, setShowSigninPassword] = useState(false);
   const [showSignupPassword, setShowSignupPassword] = useState(false);
 
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    localStorage.setItem('userRole', loginRole);
+    window.location.href = `/${loginRole}/home`;
+  };
+
   return (
     <div className="auth-viewport">
       <div className="auth-container" id="authBox" data-view={view}>
@@ -36,7 +42,7 @@ const AuthPage: React.FC = () => {
               </button>
             </div>
 
-            <form className="actual-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="actual-form" onSubmit={handleSignIn}>
               <div className="field relative">
                 <label>Username or email</label>
                 <div className="input-wrapper">
@@ -71,9 +77,6 @@ const AuthPage: React.FC = () => {
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'pointer' }}>
                   <input type="checkbox" defaultChecked /> Keep me signed in
                 </label>
-                <button type="button" className="link-btn" onClick={() => setView('signup')} style={{ color: '#64748b', fontWeight: 600 }}>
-                  Don't have an account? <span className="golden-underline" style={{ color: '#0f172a', fontWeight: 700, marginLeft: '0.25rem' }}>Register now</span>
-                </button>
               </div>
               <button type="submit" className="submit-action">Sign in</button>
             </form>
@@ -176,14 +179,32 @@ const AuthPage: React.FC = () => {
             
             {/* Visible when in Sign Up Mode (Left Side) */}
             <div className="overlay-panel overlay-signup-text">
-              <span className="brand-tag">SAARTHI</span>
+              <div className="blade-brand-lockup">
+                <div className="blade-icon-frame">
+                  <img 
+                    src="/logo-auth.png" 
+                    alt="Saarthi Emblem" 
+                    className="blade-chariot-scaled" 
+                  />
+                </div>
+                <span className="blade-brand-title">Saarthi</span>
+              </div>
               <h3 className="hero-title">Start Your <em>Journey.</em></h3>
               <p className="hero-desc">Join the institutional network, find mentors, and explore career milestones.</p>
             </div>
 
             {/* Visible when in Sign In Mode (Right Side) */}
             <div className="overlay-panel overlay-signin-text">
-              <span className="brand-tag">SAARTHI</span>
+              <div className="blade-brand-lockup">
+                <div className="blade-icon-frame">
+                  <img 
+                    src="/logo-auth.png" 
+                    alt="Saarthi Emblem" 
+                    className="blade-chariot-scaled" 
+                  />
+                </div>
+                <span className="blade-brand-title">Saarthi</span>
+              </div>
               <h3 className="hero-title">Welcome <em>back.</em></h3>
               <p className="hero-desc">Your boards, your drafts and your people are exactly where you left them.</p>
             </div>
