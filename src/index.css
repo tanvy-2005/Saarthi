@@ -1,0 +1,384 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 164 67% 18%; /* Emerald btn #0F4C3A */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 164 67% 18%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 164 67% 18%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-color: #F3FAF6; /* Subtle Mint Soft Surface */
+  }
+}
+
+/* -----------------------------------------
+   SAARTHI AUTHENTICATION INTERFACE TOKENS
+   ----------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&display=swap');
+
+:root {
+  --bg-dark-emerald: linear-gradient(135deg, #031710 0%, #082d20 50%, #0e4433 100%);
+  --blade-gradient: linear-gradient(155deg, #041b13 0%, #0b3627 100%);
+  --card-cream: #FAF7EE;
+  --btn-emerald: #0a3324;
+  --gold-highlight: #F5C347;
+}
+
+.auth-viewport {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-dark-emerald);
+  padding: 2rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.auth-container {
+  position: relative;
+  width: 100%;
+  max-width: 960px; /* Reduced from 1080px */
+  min-height: 600px;
+  background: var(--card-cream);
+  border-radius: 28px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  overflow: hidden; /* STRICT: Nothing ever overflows this box */
+}
+
+/* 2-COLUMN BASE GRID FOR FORMS */
+.forms-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.form-panel {
+  width: 50%;
+  height: 100%;
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1.25rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 45px;
+  height: 4px;
+  background-color: var(--gold-highlight);
+  border-radius: 2px;
+}
+
+/* ROLE SELECTOR */
+.role-switch {
+  display: inline-flex;
+  background: #ECE7D8;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+}
+
+.role-btn {
+  font-family: 'Quicksand', sans-serif;
+  border: none;
+  background: transparent;
+  padding: 6px 20px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.role-btn.active {
+  background: var(--btn-emerald);
+  color: #ffffff;
+}
+
+/* FORM FIELDS */
+.actual-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.field.relative {
+  position: relative;
+}
+
+.field label {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  padding-right: 2.5rem !important; /* Space for the icon */
+}
+
+.input-icon {
+  position: absolute;
+  right: 0.75rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+button.input-icon {
+  pointer-events: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.field input, .input-wrapper input {
+  font-family: 'Quicksand', sans-serif;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #D6D0BE;
+  background: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f172a;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.field input:focus, .input-wrapper input:focus {
+  border-color: var(--gold-highlight); /* Golden hover instead of green */
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: var(--gold-highlight);
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.link { font-family: 'Quicksand', sans-serif; color: #64748b; text-decoration: underline; }
+
+.submit-action {
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 0.5rem;
+  padding: 0.85rem;
+  background: var(--btn-emerald);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-action:hover {
+  background: #15553e;
+}
+
+.bottom-cta {
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 1.25rem;
+  font-size: 0.88rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.link-btn {
+  font-family: 'Quicksand', sans-serif;
+  background: none;
+  border: none;
+  color: #0f172a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.golden-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--gold-highlight);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* ====================================================
+   SLIDING OVERLAY WITH CLIP-PATH (NO OVERFLOW BUGS)
+   ==================================================== */
+.sliding-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%; /* Slightly wider for the slant */
+  height: 100%;
+  background: var(--blade-gradient);
+  z-index: 5;
+  transition: transform 0.65s cubic-bezier(0.7, 0, 0.25, 1), clip-path 0.65s cubic-bezier(0.7, 0, 0.25, 1);
+  box-shadow: 0 0 50px rgba(0,0,0,0.4);
+}
+
+/* Sign-in state: Overlay is on the RIGHT side with slant */
+.auth-container[data-view="signin"] .sliding-overlay {
+  transform: translateX(82%);
+  clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Sign-up state: Overlay is on the LEFT side with inverted slant */
+.auth-container[data-view="signup"] .sliding-overlay {
+  transform: translateX(0%);
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+}
+
+/* OVERLAY CONTENT TRACK */
+.overlay-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4rem;
+  color: #ffffff;
+  transition: opacity 0.3s ease;
+}
+
+.brand-tag {
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1FAF73;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-family: 'Newsreader', serif;
+  font-size: 2.85rem;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+/* GOLDEN ACCENT FOR JOURNEY & BACK */
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-highlight);
+}
+
+.hero-desc {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #B5D1C7;
+}
+
+/* Visibility toggling inside overlay */
+.auth-container[data-view="signin"] .overlay-signin-text {
+  opacity: 1;
+  pointer-events: auto;
+}
+.auth-container[data-view="signin"] .overlay-signup-text {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.auth-container[data-view="signup"] .overlay-signin-text {
+  opacity: 0;
+  pointer-events: none;
+}
+.auth-container[data-view="signup"] .overlay-signup-text {
+  opacity: 1;
+  pointer-events: auto;
+}
